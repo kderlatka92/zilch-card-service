@@ -1,4 +1,4 @@
-package kderlatka.provider.mastercard;
+package kderlatka.cardservice.provider.mastercard;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

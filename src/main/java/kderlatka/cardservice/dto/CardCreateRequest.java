@@ -1,4 +1,4 @@
-package kderlatka.dto;
+package kderlatka.cardservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

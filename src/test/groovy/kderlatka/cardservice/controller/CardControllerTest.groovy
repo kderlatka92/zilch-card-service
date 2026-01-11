@@ -1,4 +1,4 @@
-package kderlatka.controller
+package kderlatka.cardservice.controller
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration
@@ -16,10 +16,10 @@ import spock.lang.Specification
 import java.util.concurrent.ThreadLocalRandom
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*
-import static kderlatka.dto.CardCreateRequest.CardScheme.MASTERCARD
-import static kderlatka.dto.CardCreateRequest.CardScheme.VISA
-import static kderlatka.provider.mastercard.MasterCardProvider.MASTERCARD_GENERATE
-import static kderlatka.provider.visa.VisaCardProvider.VISA_GENERATE
+import static kderlatka.cardservice.dto.CardCreateRequest.CardScheme.MASTERCARD
+import static kderlatka.cardservice.dto.CardCreateRequest.CardScheme.VISA
+import static kderlatka.cardservice.provider.mastercard.MasterCardProvider.MASTERCARD_GENERATE
+import static kderlatka.cardservice.provider.visa.VisaCardProvider.VISA_GENERATE
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 

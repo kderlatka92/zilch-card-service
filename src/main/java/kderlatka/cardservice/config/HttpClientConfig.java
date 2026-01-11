@@ -1,4 +1,4 @@
-package kderlatka.http;
+package kderlatka.cardservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

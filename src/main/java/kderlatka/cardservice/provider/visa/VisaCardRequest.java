@@ -1,4 +1,4 @@
-package kderlatka.provider.visa;
+package kderlatka.cardservice.provider.visa;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

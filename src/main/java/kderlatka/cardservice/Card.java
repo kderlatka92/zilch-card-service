@@ -1,4 +1,4 @@
-package kderlatka.cardservice.domain;
+package kderlatka.cardservice;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

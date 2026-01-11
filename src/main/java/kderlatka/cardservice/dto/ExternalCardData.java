@@ -1,6 +1,6 @@
-package kderlatka.dto;
+package kderlatka.cardservice.dto;
 
-import kderlatka.domain.Card;
+import kderlatka.cardservice.Card;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

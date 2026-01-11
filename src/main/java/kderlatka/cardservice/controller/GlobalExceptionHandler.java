@@ -1,4 +1,4 @@
-package kderlatka.controller;
+package kderlatka.cardservice.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;

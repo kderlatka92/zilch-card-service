@@ -1,16 +1,16 @@
-package kderlatka.provider.mastercard;
+package kderlatka.cardservice.provider.mastercard;
 
-import kderlatka.dto.CardCreateRequest;
-import kderlatka.dto.ExternalCardData;
-import kderlatka.provider.ExternalCardProvider;
+import kderlatka.cardservice.dto.CardCreateRequest;
+import kderlatka.cardservice.dto.ExternalCardData;
+import kderlatka.cardservice.provider.ExternalCardProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import static kderlatka.dto.CardCreateRequest.CardScheme.MASTERCARD;
+import static kderlatka.cardservice.dto.CardCreateRequest.CardScheme.MASTERCARD;
 
 @Service
 @Slf4j
@@ -26,18 +26,19 @@ public class MasterCardProvider implements ExternalCardProvider {
 
     @Override
     public ExternalCardData generateCard(CardCreateRequest request) {
-        try {
-            MasterCardResponse response = restTemplate.postForObject(
-                    mastercardApiUrl + MASTERCARD_GENERATE,
-                    new MasterCardRequest(request.getCardholderName()),
-                    MasterCardResponse.class
-            );
+        return mapCardDataOrThrowException(
+                () -> callMasterCardForCard(request),
+                () -> new MasterCardCardCreationException("MasterCard returned empty response"),
+                e -> new MasterCardCardCreationException("Failed to generate MASTERCARD card: " + e.getMessage())
+        );
+    }
 
-            return response.toExternalCardData();
-        } catch (RestClientException e) {
-            log.error("Error calling MasterCard API", e);
-            throw new RuntimeException("Failed to generate MASTERCARD card: " + e.getMessage());
-        }
+    private @Nullable MasterCardResponse callMasterCardForCard(CardCreateRequest request) {
+        return restTemplate.postForObject(
+                mastercardApiUrl + MASTERCARD_GENERATE,
+                new MasterCardRequest(request.getCardholderName()),
+                MasterCardResponse.class
+        );
     }
 
     @Override

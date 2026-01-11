@@ -1,28 +1,13 @@
 spring:
-  application:
-    name: zilch-card-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/card_service
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:tc:postgresql:17:///test_card_service
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
   jpa:
     hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        jdbc:
-          batch_size: 20
-        order_inserts: true
-        order_updates: true
+      ddl-auto: create-drop
     show-sql: false
-
-server:
-  port: 8080
-  servlet:
-    context-path: /api
 
 logging:
   level:
-    root: INFO
+    root: WARN
     kderlatka: DEBUG

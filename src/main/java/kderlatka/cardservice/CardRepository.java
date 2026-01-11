@@ -1,8 +1,7 @@
-package kderlatka.cardservice.repository;
+package kderlatka.cardservice;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import kderlatka.cardservice.domain.Card;
 
 import java.util.Optional;
 import java.util.UUID;

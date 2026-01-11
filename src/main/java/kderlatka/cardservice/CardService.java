@@ -1,15 +1,14 @@
-package kderlatka.cardservice.service;
+package kderlatka.cardservice;
 
-import kderlatka.cardservice.domain.Card;
 import kderlatka.cardservice.dto.CardCreateRequest;
+import kderlatka.cardservice.exception.CardNotFoundException;
+import kderlatka.cardservice.exception.UnrecognisedProviderException;
 import kderlatka.cardservice.provider.ExternalCardProvider;
-import kderlatka.cardservice.repository.CardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 @Service
 @Slf4j
@@ -21,7 +20,7 @@ public class CardService {
 
     public Card getCard(String cardNumber) {
         return cardRepository.findByCardNumber(cardNumber)
-                .orElseThrow(() -> new NoSuchElementException("card with number " + cardNumber + " not found."));
+                .orElseThrow(() -> new CardNotFoundException("card with number " + cardNumber + " not found."));
     }
 
     public Card createCard(CardCreateRequest request) {
@@ -39,7 +38,7 @@ public class CardService {
                 .filter(provider -> provider.supports(scheme))
                 .findFirst()
                 .orElseThrow(() ->
-                        new IllegalArgumentException("No provider found for scheme: " + scheme)
+                        new UnrecognisedProviderException("No provider found for scheme: " + scheme)
                 );
     }
 }

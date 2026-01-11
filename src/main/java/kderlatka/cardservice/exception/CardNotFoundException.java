@@ -1,7 +1,9 @@
 package kderlatka.cardservice.exception;
 
-public class UnrecognisedProviderException extends IllegalArgumentException {
-    public UnrecognisedProviderException(String message) {
+import java.util.NoSuchElementException;
+
+public class CardNotFoundException extends NoSuchElementException {
+    public CardNotFoundException(String message) {
         super(message);
     }
 }

@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: zilch-card-service
+
   datasource:
     url: jdbc:tc:postgresql:17:///test_card_service
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
@@ -7,7 +10,21 @@ spring:
       ddl-auto: create-drop
     show-sql: false
 
+# Logging
 logging:
   level:
     root: WARN
-    kderlatka: DEBUG
+    kderlatka.cardservice: DEBUG
+    org.springframework.boot.test: DEBUG
+    org.springframework.web.servlet.mvc.method.annotation: DEBUG
+    org.springframework.test.context: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+    org.testcontainers: INFO
+    org.testcontainers.jdbc: DEBUG
+    org.apache.kafka.clients.NetworkClient: ERROR
+    org.apache.kafka.clients.consumer: ERROR
+
+# Server
+server:
+  port: 0

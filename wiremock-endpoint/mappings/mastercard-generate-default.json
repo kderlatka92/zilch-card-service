@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/mastercard/generate"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "error": "NOT_FOUND",
+      "message": "holderName must contain 'green' (success) or 'red' (maintenance)."
+    }
+  }
+}

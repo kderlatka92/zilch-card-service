@@ -15,9 +15,20 @@ spring:
         format_sql: true
   servlet:
     context-path: /api
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: earliest
+      group-id: card-service-group
+    producer:
+      acks: all
+      retries: 3
+    properties:
+      linger.ms: 10
+      batch.size: 32768
 
 server:
-  port: 8080
+  port: 1234
 
 external:
   visa:
